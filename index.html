@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Little Star ✨ Handmade Hair Bows</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:wght@300;400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rose: #f2a4b5;
+    --rose-deep: #e07d95;
+    --gold: #d4a843;
+    --gold-light: #f0d080;
+    --cream: #fdf6f0;
+    --lilac: #d9b8e8;
+    --mint: #b8e0d4;
+    --sky: #c4dff0;
+    --text: #3d2c35;
+    --text-soft: #7a5c68;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--cream);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 2rem;
+    background:
+      radial-gradient(ellipse 80% 60% at 20% 10%, #fde8f0 0%, transparent 60%),
+      radial-gradient(ellipse 60% 50% at 80% 80%, #e8d8f5 0%, transparent 55%),
+      radial-gradient(ellipse 50% 40% at 60% 20%, #fdf0c8 0%, transparent 50%),
+      var(--cream);
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .sparkle {
+    position: absolute;
+    pointer-events: none;
+    animation: floatSpark linear infinite;
+    opacity: 0;
+  }
+  .sparkle::before { content: '✦'; font-size: inherit; color: var(--gold); }
+  @keyframes floatSpark {
+    0%   { transform: translateY(110vh) rotate(0deg);   opacity: 0; }
+    10%  { opacity: 0.7; }
+    90%  { opacity: 0.5; }
+    100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+  }
+
+  .hero-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 0.4rem 1.2rem;
+    border-radius: 50px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 16px rgba(212,168,67,0.35);
+    animation: fadeSlideDown 0.8s ease both;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 12vw, 7rem);
+    line-height: 1;
+    letter-spacing: -0.01em;
+    color: var(--text);
+    animation: fadeSlideDown 0.9s ease 0.1s both;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--rose-deep);
+    display: block;
+  }
+
+  .hero-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.1rem, 3vw, 1.5rem);
+    font-weight: 300;
+    color: var(--text-soft);
+    margin: 1rem 0 2.5rem;
+    letter-spacing: 0.04em;
+    animation: fadeSlideDown 1s ease 0.2s both;
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: linear-gradient(135deg, var(--rose-deep), #c4607a);
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 1rem 2.2rem;
+    border-radius: 50px;
+    box-shadow: 0 8px 30px rgba(224,125,149,0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+    animation: fadeSlideDown 1.1s ease 0.3s both;
+  }
+  .hero-cta:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(224,125,149,0.5); }
+  .hero-cta svg { width: 20px; height: 20px; fill: currentColor; }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    opacity: 0.6;
+    animation: fadeIn 1.5s ease 1s both;
+  }
+  .hero-scroll span { animation: bounce 1.5s infinite; display: block; }
+  @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(5px)} }
+
+  .hero-bow {
+    width: clamp(60px,15vw,120px);
+    margin-bottom: 1.5rem;
+    animation: fadeSlideDown 0.7s ease both, wobble 4s ease-in-out 2s infinite;
+  }
+  @keyframes wobble {
+    0%,100%{transform:rotate(-3deg) scale(1)}
+    50%{transform:rotate(3deg) scale(1.05)}
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0 2rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .divider::before,.divider::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
+  .divider span { font-size: 1.2rem; color: var(--gold); }
+
+  /* ── SECTION TITLE ── */
+  .section-title {
+    text-align: center;
+    padding: 4rem 2rem 0.5rem;
+  }
+  .section-title h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 6vw, 3.2rem);
+    color: var(--text);
+  }
+  .section-title h2 em { font-style: italic; color: var(--rose-deep); }
+  .section-title p {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 1.1rem;
+    color: var(--text-soft);
+    margin-top: 0.5rem;
+  }
+
+  /* ── COLLECTIONS ── */
+  .collections {
+    padding: 3rem 1.5rem 5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .card {
+    border-radius: 24px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 20px rgba(61,44,53,0.08);
+  }
+  .card:hover { transform: translateY(-8px) rotate(0.5deg); box-shadow: 0 16px 40px rgba(61,44,53,0.15); }
+
+  .card-bg {
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .card-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 50%, rgba(255,255,255,0.3));
+  }
+
+  .card-princess .card-bg { background: linear-gradient(135deg, #f9d4e8, #e8c4f8, #c4d8f8); }
+  .card-characters .card-bg { background: linear-gradient(135deg, #fde8a0, #fcc4a8, #f8e0c4); }
+  .card-classics .card-bg { background: linear-gradient(135deg, #d8f0e0, #c8e8f8, #e8d8f0); }
+
+  .card-body {
+    background: #fff;
+    padding: 1.4rem 1.6rem 1.6rem;
+  }
+  .card-label {
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.3rem;
+  }
+  .card-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+  }
+  .card-desc {
+    font-size: 0.85rem;
+    color: var(--text-soft);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+  .card-tag {
+    display: inline-block;
+    background: var(--cream);
+    border: 1px solid #f0d8e4;
+    border-radius: 50px;
+    font-size: 0.7rem;
+    padding: 0.2rem 0.7rem;
+    color: var(--text-soft);
+    margin: 0.15rem;
+  }
+
+  /* ── HANDMADE STRIP ── */
+  .strip {
+    background: linear-gradient(135deg, var(--rose-deep), #c4607a);
+    color: #fff;
+    padding: 3rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .strip::before {
+    content: '✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦';
+    position: absolute;
+    top: 0.5rem; left: 0; right: 0;
+    text-align: center;
+    font-size: 0.6rem;
+    letter-spacing: 0.4em;
+    opacity: 0.3;
+    color: var(--gold-light);
+  }
+  .strip h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 5vw, 2.4rem);
+    margin-bottom: 0.8rem;
+  }
+  .strip p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 300;
+    opacity: 0.9;
+    max-width: 520px;
+    margin: 0 auto 1.8rem;
+    line-height: 1.7;
+  }
+  .strip-icons {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+  }
+  .strip-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .strip-icon .ico { font-size: 1.8rem; }
+  .strip-icon span { font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.85; }
+
+  /* ── CUSTOM ORDER ── */
+  .custom {
+    padding: 5rem 2rem;
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .custom-emoji { font-size: 3rem; margin-bottom: 1rem; }
+  .custom h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 5vw, 2.8rem);
+    margin-bottom: 1rem;
+    color: var(--text);
+  }
+  .custom h2 em { font-style: italic; color: var(--rose-deep); }
+  .custom p {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 1.1rem;
+    color: var(--text-soft);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+  .custom-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1.2rem;
+    margin-bottom: 2.5rem;
+    text-align: left;
+  }
+  .step {
+    background: #fff;
+    border-radius: 16px;
+    padding: 1.2rem;
+    box-shadow: 0 2px 12px rgba(61,44,53,0.06);
+    border: 1px solid #f5e8ee;
+  }
+  .step-num {
+    width: 32px; height: 32px;
+    background: linear-gradient(135deg, var(--rose), var(--rose-deep));
+    color: #fff;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+  }
+  .step h4 { font-size: 0.9rem; font-weight: 500; margin-bottom: 0.3rem; color: var(--text); }
+  .step p { font-size: 0.8rem; color: var(--text-soft); line-height: 1.5; }
+
+  /* ── BUTTONS ── */
+  .btn-wa {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: #25d366;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 1rem 2.2rem;
+    border-radius: 50px;
+    box-shadow: 0 8px 24px rgba(37,211,102,0.35);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .btn-wa:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(37,211,102,0.45); }
+  .btn-wa svg { width: 20px; height: 20px; fill: currentColor; }
+
+  /* ── MARQUEE ── */
+  .marquee-wrap {
+    background: var(--text);
+    color: var(--gold-light);
+    padding: 0.8rem 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .marquee-inner {
+    display: inline-block;
+    animation: marquee 20s linear infinite;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.95rem;
+    letter-spacing: 0.12em;
+  }
+  @keyframes marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+  .marquee-inner span { margin: 0 2.5rem; }
+  .marquee-inner .dot { color: var(--rose); margin: 0 0.8rem; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--text);
+    color: rgba(255,255,255,0.6);
+    text-align: center;
+    padding: 2.5rem 2rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+  }
+  footer .logo-foot {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: #fff;
+    margin-bottom: 0.5rem;
+  }
+  footer a { color: var(--gold-light); text-decoration: none; }
+  footer .social { margin: 1rem 0 0.5rem; font-size: 1.2rem; letter-spacing: 0.3rem; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeSlideDown {
+    from { opacity:0; transform:translateY(-20px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity:0; }
+    to   { opacity:1; }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 600px) {
+    .collections { grid-template-columns: 1fr; padding: 2rem 1rem 3rem; }
+    .custom-steps { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    for (let i = 0; i < 12; i++) {
+      const s = document.createElement('div');
+      s.className = 'sparkle';
+      s.style.cssText = `left:${Math.random()*100}%;font-size:${8+Math.random()*12}px;animation-duration:${8+Math.random()*10}s;animation-delay:${Math.random()*8}s;`;
+      document.querySelector('.hero').appendChild(s);
+    }
+  });
+</script>
+
+<!-- HERO -->
+<section class="hero">
+  <svg class="hero-bow" viewBox="0 0 120 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M60 40 C40 10, 5 15, 10 38 C15 60, 45 55, 60 40Z" fill="#f2a4b5" opacity="0.9"/>
+    <path d="M60 40 C80 10, 115 15, 110 38 C105 60, 75 55, 60 40Z" fill="#e07d95" opacity="0.9"/>
+    <circle cx="60" cy="40" r="8" fill="#d4a843"/>
+    <circle cx="60" cy="40" r="5" fill="#f0d080"/>
+    <path d="M54 42 C50 55, 58 70, 60 68 C62 70, 70 55, 66 42Z" fill="#f2a4b5" opacity="0.7"/>
+    <circle cx="30" cy="28" r="2" fill="#f0d080" opacity="0.8"/>
+    <circle cx="20" cy="38" r="1.5" fill="#fff" opacity="0.9"/>
+    <circle cx="40" cy="20" r="1.5" fill="#fff" opacity="0.8"/>
+    <circle cx="90" cy="28" r="2" fill="#f0d080" opacity="0.8"/>
+    <circle cx="100" cy="38" r="1.5" fill="#fff" opacity="0.9"/>
+  </svg>
+
+  <div class="hero-badge">✦ Handmade with love · Ohio, USA ✦</div>
+
+  <h1 class="hero-title">
+    My Little
+    <em>Star</em>
+  </h1>
+
+  <p class="hero-sub">Handmade hair bows for your little princess</p>
+
+  <a class="hero-cta" href="https://wa.me/14192060305?text=Hi!%20I%20saw%20your%20website%20and%20I%27m%20interested%20in%20your%20bows%20%F0%9F%8E%80" target="_blank">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Order on WhatsApp
+  </a>
+
+  <div class="hero-scroll">
+    <span>↓</span>
+    see collections
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-inner">
+    <span>✦ Disney Princesses</span><span class="dot">◆</span>
+    <span>Unicorns & Mermaids</span><span class="dot">◆</span>
+    <span>Glitter Bows</span><span class="dot">◆</span>
+    <span>Handmade with Love</span><span class="dot">◆</span>
+    <span>Custom Orders</span><span class="dot">◆</span>
+    <span>Ships Across the USA</span><span class="dot">◆</span>
+    <span>Made in Ohio</span><span class="dot">◆</span>
+    <span>✦ Disney Princesses</span><span class="dot">◆</span>
+    <span>Unicorns & Mermaids</span><span class="dot">◆</span>
+    <span>Glitter Bows</span><span class="dot">◆</span>
+    <span>Handmade with Love</span><span class="dot">◆</span>
+    <span>Custom Orders</span><span class="dot">◆</span>
+    <span>Ships Across the USA</span><span class="dot">◆</span>
+    <span>Made in Ohio</span><span class="dot">◆</span>
+  </div>
+</div>
+
+<!-- COLLECTIONS -->
+<div class="section-title reveal">
+  <h2>Our <em>Collections</em></h2>
+  <p>Every bow is a one-of-a-kind piece, made with love and care</p>
+</div>
+<div class="divider reveal"><span>✦</span></div>
+
+<div class="collections">
+
+  <div class="card card-princess reveal">
+    <div class="card-bg">🏰</div>
+    <div class="card-body">
+      <div class="card-label">Star Collection</div>
+      <div class="card-name">Disney Princesses</div>
+      <p class="card-desc">Handmade bows featuring mini clay figures of your favorite princesses. Ariel, Rapunzel, Snow White, Elsa, Belle, Alice and more — each one painted by hand.</p>
+      <span class="card-tag">Ariel 🧜‍♀️</span>
+      <span class="card-tag">Rapunzel 👑</span>
+      <span class="card-tag">Elsa ❄️</span>
+      <span class="card-tag">Belle 🌹</span>
+      <span class="card-tag">Alice 🐇</span>
+    </div>
+  </div>
+
+  <div class="card card-characters reveal" style="transition-delay:0.1s">
+    <div class="card-bg">🦄</div>
+    <div class="card-body">
+      <div class="card-label">Magic Collection</div>
+      <div class="card-name">Characters & Fantasy</div>
+      <p class="card-desc">Unicorns, mermaids, Peppa Pig, Hello Kitty and more adorable characters. Perfect for birthdays, special occasions, and little girls who believe in magic.</p>
+      <span class="card-tag">Unicorns 🦄</span>
+      <span class="card-tag">Mermaids 🧜</span>
+      <span class="card-tag">Peppa Pig 🐷</span>
+      <span class="card-tag">Hello Kitty 🎀</span>
+    </div>
+  </div>
+
+  <div class="card card-classics reveal" style="transition-delay:0.2s">
+    <div class="card-bg">🎀</div>
+    <div class="card-body">
+      <div class="card-label">Classic Collection</div>
+      <div class="card-name">Glitter & Felt Bows</div>
+      <p class="card-desc">Soft felt and premium glitter bows in every color of the rainbow. Simple, elegant, and perfect for everyday wear or matching any outfit.</p>
+      <span class="card-tag">Glitter ✨</span>
+      <span class="card-tag">Felt 🎨</span>
+      <span class="card-tag">Matching sets</span>
+      <span class="card-tag">All colors 🌈</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- STRIP -->
+<div class="strip reveal">
+  <h3>✦ 100% Handmade ✦</h3>
+  <p>Every bow is created with premium materials and a whole lot of love. We're not a factory — we're a mom making something truly special for your little girl.</p>
+  <div class="strip-icons">
+    <div class="strip-icon"><span class="ico">🎨</span><span>Clay figures</span></div>
+    <div class="strip-icon"><span class="ico">✂️</span><span>Cut by hand</span></div>
+    <div class="strip-icon"><span class="ico">✨</span><span>Premium glitter</span></div>
+    <div class="strip-icon"><span class="ico">💝</span><span>Made with love</span></div>
+    <div class="strip-icon"><span class="ico">📦</span><span>Gift packaging</span></div>
+  </div>
+</div>
+
+<!-- CUSTOM -->
+<section class="custom">
+  <div class="custom-emoji reveal">🌟</div>
+  <h2 class="reveal">Want something <em>custom?</em></h2>
+  <p class="reveal">We can make any bow in your little girl's favorite character, in her birthday colors, or perfectly matched to her special outfit. Just reach out!</p>
+
+  <div class="custom-steps reveal">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h4>Message Us</h4>
+      <p>Send us a WhatsApp or DM with your idea</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h4>Get a Quote</h4>
+      <p>We'll send you a price and delivery time right away</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h4>We Create</h4>
+      <p>Your one-of-a-kind bow gets made with love</p>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <h4>We Ship</h4>
+      <p>Arrives in beautiful packaging, ready to gift</p>
+    </div>
+  </div>
+
+  <a class="btn-wa reveal" href="https://wa.me/14192060305?text=Hi!%20I%27d%20like%20to%20place%20a%20custom%20order%20%F0%9F%8E%80" target="_blank">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Place My Order ✨
+  </a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="logo-foot">My Little Star ✦</div>
+  <p>Handmade hair bows · Ohio, USA</p>
+  <div class="social">
+    <a href="https://www.instagram.com/mylittlestaroh" target="_blank">📸</a>
+  </div>
+  <p>Instagram: <a href="https://www.instagram.com/mylittlestaroh" target="_blank">@mylittlestaroh</a> &nbsp;·&nbsp; WhatsApp: <a href="https://wa.me/14192060305">419-206-0305</a></p>
+  <p style="margin-top:1rem;opacity:0.4">© 2025 My Little Star · Made with love 💕</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
